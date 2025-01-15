@@ -1,0 +1,36 @@
+/* Define theme colors */
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.text-white {
+  color: var(--text-white-color);
+}
+
+
+
+/* Layout */
+.layout {
+  height: calc(100vh - 70px); /* Full height minus navbar */
+}
+
+.theme-sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg-color);
+  padding: 16px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.theme-main-content {
+  flex-grow: 1;
+  padding: 16px;
+  background-color: var(--main-content-bg-color);
+  overflow-y: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .theme-sidebar {
+    display: none; /* Hide sidebar on smaller screens */
+  }
+}

@@ -1,0 +1,216 @@
+<div class="sidebar-container" [class.shifted]="selectedSection" >
+  <!-- Main Sidebar -->
+  <div class="sidebar">
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+      <label class="switch">
+        <input type="checkbox" [checked]="darkMode" (change)="toggleDarkMode()" />
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <!-- App Icon -->
+    <div class="app-icon" (click)="toggleAppGrid()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+        class="icon icon-tabler icons-tabler-filled icon-tabler-apps">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M9 3h-4a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2z" />
+        <path d="M9 13h-4a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2z" />
+        <path d="M19 13h-4a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2z" />
+        <path
+          d="M17 3a1 1 0 0 1 .993 .883l.007 .117v2h2a1 1 0 0 1 .117 1.993l-.117 .007h-2v2a1 1 0 0 1 -1.993 .117l-.007 -.117v-2h-2a1 1 0 0 1 -.117 -1.993l.117 -.007h2v-2a1 1 0 0 1 1 -1z" />
+      </svg>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+      <li class="sidebar-item" (click)="handleMainItemClick('System', $event)">🏠 <h6>System</h6>
+      </li>
+      <li class="sidebar-item" (click)="handleMainItemClick('User', $event)">📧 <h6>User</h6>
+      </li>
+      <li class="sidebar-item" (click)="handleMainItemClick('Help', $event)">📅 <h6>Help</h6>
+      </li>
+      <li class="sidebar-item" (click)="handleMainItemClick('Report', $event)">📊 <h6>Report</h6>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Second Sidebar or Submenu -->
+  <div *ngIf="selectedSection" class="second-sidebar">
+    <!-- Submenu content (replaces second sidebar) -->
+    <div *ngIf="isSubmenuActive">
+      <div class="submenu-header">
+        <button class="back-button" (click)="goBackToSecondSidebar($event)">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h6>{{ selectedSubmenu }}</h6>
+      </div>
+      <ng-container [ngSwitch]="selectedSubmenu">
+        <div *ngSwitchCase="'Network'">
+          <ul>
+            <li>Interface</li>
+            <li >Gateway</li>
+            <li >Priorities</li>
+            <li>DNS</li>
+            <li >Static Route</li>
+
+        
+          </ul>
+        </div>
+        <div *ngSwitchCase="'Firewall'">
+          <ul>
+            <li routerLink="firewall-create">Create</li>
+            <li routerLink="firewall-manage">Manage</li>
+            <li>DoS Settings</li>
+            <li>DoS Bypass</li>
+            <li>Free Sites</li>
+          </ul>
+        </div>
+        <div *ngSwitchCase="'DHCP'">
+          <ul>
+            <li>Manage DHCP</li>
+            <li>IP Leasing Report</li>
+            <li>Mac Upload</li>
+          </ul>
+        </div>
+
+
+        <div *ngSwitchCase="'PPPoE'">
+          <ul>
+            <li>Manage PPPoE</li>
+          </ul>
+        </div>
+
+        <div *ngSwitchCase="'Manage Data'">
+          <ul>
+            <li>Backup</li>
+            <li>Backup Schedule</li>
+            <li>Restore</li>
+            <li>Auto Purge</li>
+            <li>Manual Purge</li>
+            <li>Migrate User</li>
+            <li>Authentication Logs</li>
+          </ul>
+        </div>
+
+
+        <div *ngSwitchCase="'Client Services'">
+          <ul>
+           <li>Parameters</li>
+            <li>Customized Images</li>
+            <li>Forgot Password</li>
+            <li>ClientGUI URLs</li>
+            <li>Webservice Config</li>
+            <li>Password Config</li>
+            <li>Configuration</li>
+          </ul>
+        </div>
+
+        <div *ngSwitchCase="'ACL'">
+          <ul>
+            <li>Access Control</li>
+            <li>User Type</li>
+            <li>User Access</li>
+            <li>Console ACL</li>
+          </ul>
+        </div>
+
+        <div *ngSwitchCase="'User Management'">
+          <ul>
+            <li>User List</li>
+            <li>Role List</li>
+            <li>Permission List</li>
+          </ul>
+        </div>
+
+        <div *ngSwitchCase="'Dynamic DNS Service'">
+          <ul>
+            <li>Register Host</li>
+            <li>Manage Hosts</li>
+          </ul>
+        </div>
+
+        <div *ngSwitchCase="'Roles & Permissions'">
+          <ul>
+            <li>Role List</li>
+            <li>Permission List</li>
+          </ul>
+        </div>
+
+        
+
+        <div *ngSwitchDefault>
+          <p>No submenu content available</p>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Main Section Details -->
+    <div *ngIf="!isSubmenuActive">
+      <ng-container [ngSwitch]="selectedSection">
+        <div *ngSwitchCase="'System'">
+          <h5 class="submenu-heading">System</h5>
+          <ul>
+            <li (click)="handleSubmenuClick('Network', $event)">Network</li>
+            <li (click)="handleSubmenuClick('Firewall', $event)">Firewall</li>
+            <li (click)="handleSubmenuClick('DHCP', $event)">DHCP</li>
+            <li (click)="handleSubmenuClick('Services', $event)">Services</li>
+            <li (click)="handleSubmenuClick('PPPoE', $event)">PPPoE</li>
+            <li (click)="handleSubmenuClick('Console', $event)">Console</li>
+            <li (click)="handleSubmenuClick('Manage Data', $event)">Manage Data</li>
+            <li (click)="handleSubmenuClick('Client Services', $event)">Client Services</li>
+            <li (click)="handleSubmenuClick('ACL', $event)">ACL</li>
+            <li (click)="handleSubmenuClick('Dynamic DNS Service', $event)">Dynamic DNS Service</li>
+            <li (click)="handleSubmenuClick('Captive Portal', $event)">Captive Portal</li>
+            <li (click)="handleSubmenuClick('NAS Management', $event)">NAS Management</li>
+            <li (click)="handleSubmenuClick('Status Tracker', $event)">Status Tracker</li>
+            <li (click)="handleSubmenuClick('System Settings', $event)">System Settings</li>
+            <li (click)="handleSubmenuClick('Dashboard Conf', $event)">Dashboard Conf</li>
+            <li (click)="handleSubmenuClick('System Tools', $event)">System Tools</li>
+           
+          </ul>
+        </div>
+        <div *ngSwitchCase="'User'">
+          <h3 class="submenu-heading">User</h3>
+          <ul>
+            <li (click)="handleSubmenuClick('User Management', $event)">User Management</li>
+            <li (click)="handleSubmenuClick('Roles & Permissions', $event)">Roles & Permissions</li>
+            <li (click)="handleSubmenuClick('Manage Users', $event)">Manage Users</li>
+            <li (click)="handleSubmenuClick('Live Users', $event)">Live Users</li>
+            <li (click)="handleSubmenuClick('Pool Management', $event)">Pool Management</li>
+            <li (click)="handleSubmenuClick('Manage Customers', $event)">Manage Customers</li>
+            <li (click)="handleSubmenuClick('Dynamize Fields', $event)">Dynamize Fields</li>
+            <li (click)="handleSubmenuClick('Demographic Fields', $event)">Demographic Fields</li>
+          </ul>
+        </div>
+
+        <div *ngSwitchCase="'Help'">
+          <h3 class="submenu-heading">Help</h3>
+          <ul>
+            <li (click)="handleSubmenuClick('Company Info', $event)">Company Info</li>
+            <li (click)="handleSubmenuClick('24Online Client', $event)">24online Client</li>
+            <li (click)="handleSubmenuClick('Upgrade Version', $event)">Upgrade Version</li>
+            <li (click)="handleSubmenuClick('Register 24online', $event)">Register 24online</li>
+            <li (click)="handleSubmenuClick('Manage Customization', $event)">Manage Customization</li>
+            <li (click)="handleSubmenuClick('Documentation', $event)">Documentation</li>
+            <li (click)="handleSubmenuClick('About', $event)">About</li>
+          </ul>
+        </div>
+
+        <div *ngSwitchCase="'Report'">
+          <h3 class="submenu-heading">Report</h3>
+          <ul>
+            <li (click)="handleSubmenuClick('Reports', $event)">Reports</li>
+            <li (click)="handleSubmenuClick('FTP Report Configuration', $event)">FTP Report Configuration</li>
+          </ul>
+        </div>
+        <!-- Add cases for Help and Report as needed -->
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- AppContent Sidebar -->
+  <!-- <div class="app-content-sidebar" [class.open]="isAppGridVisible" [style.left]="isAppGridVisible ? '75px' : '-100%'">
+    <app-content *ngIf="isAppGridVisible"></app-content>
+  </div> -->
+</div>

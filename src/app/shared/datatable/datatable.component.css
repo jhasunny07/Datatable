@@ -1,0 +1,237 @@
+/* Table Styling */
+
+table {
+  display: grid;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f8f9fa;
+}
+
+table th {
+  background-color: #2F3C7E;
+  color: #f8f9fa;
+}
+
+
+
+.card-header button {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+
+}
+
+
+.btn-group{
+  background-color: #2F3C7E;
+  color: #f1f1f1;
+}
+
+table tr {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); 
+  
+}
+
+table th,
+table td {
+  border: 1 px solid red !important;
+
+  text-align: left;
+}
+
+
+
+
+#datatable thead th {
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+/* Row Hover Effect */
+#datatable tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1rem 1.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Button Styling */
+
+
+/* Print Styles */
+@media print {
+  .card-header {
+    display: none;
+  }
+  .card-body {
+    padding: 0;
+  }
+  #datatable {
+    border: 1px solid black;
+  }
+  #datatable thead {
+    background-color: black !important;
+    color: white !important;
+  }
+}
+
+
+
+
+.table {
+  table-layout: auto; /* Allow columns to adjust width dynamically */
+  width: 100%; /* Ensure table takes up full width */
+}
+
+
+
+ngx-datatable.bootstrap {
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+ngx-datatable .datatable-header {
+  background-color: #f8f9fa;
+}
+
+ngx-datatable .datatable-body {
+  border-top: 1px solid #dee2e6;
+}
+
+.modal {
+  display: block !important; /* Force display */
+  visibility: visible !important; /* Ensure visibility */
+  z-index: 1050 !important; /* Ensure it is above other content */
+}
+
+.modal-backdrop {
+  display: block !important;
+  z-index: 1040 !important; /* Backdrop below the modal */
+}
+
+.dropdown-menu {
+  z-index: 1050 !important; /* Set a high z-index to ensure it appears above other elements */
+  position: absolute; /* Ensure it is positioned correctly */
+  background-color: white; /* Set a background color */
+  border: 1px solid #ddd; /* Add a border for better visibility */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none; /* Hide by default */
+  visibility: visible !important;  /* Add a shadow for better visibility */
+}
+
+/* Dropdown visibility */
+
+.dropdown-menu.show {
+  display: block; /* Show when the class is applied */
+  z-index: 1050 !important; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Ensure it is positioned correctly */
+  background-color: white; /* Set a background color */
+  border: 1px solid #ddd;
+}
+
+
+
+
+
+.hidden-column {
+  display: none;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+
+.card-body {
+  padding: 0;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling */
+}
+
+table {
+  width: 100%;
+  min-width: 800px; /* Ensures the table doesn't shrink too much */
+  table-layout: fixed; /* Prevents the table from expanding too much */
+}
+
+th, td {
+  text-align: left;
+  white-space: nowrap; /* Prevents content from wrapping */
+}
+
+/* Pagination container styles */
+
+
+/* Responsive behavior for small screens */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  th, td {
+    padding: 5px;
+  }
+}
+
+/* Optional: Hide columns on mobile based on visibility */
+.hidden-column {
+  display: none !important;
+}
+
+/* Optional: Style for dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+}
+
+
+
+
+
+
+
+/* Styling for the table header */
+table thead th {
+  background-color: #2F3C7E;
+  color: white;
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Styling for table rows */
+table tbody tr td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Zebra striping for rows */
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

@@ -1,0 +1,47 @@
+<nav class="navbar bg-primary text-white px-3">
+  <!-- Logo -->
+  <a href="/" class="d-flex align-items-center me-4">
+    <img src="assets/images/onlinelogo.png" alt="Company Logo" class="logo-img" />
+  </a>
+
+  <!-- Navigation Links -->
+  <ul class="navbar-nav d-flex flex-row mx-auto">
+    <li class="nav-item me-4">
+      <a class="nav-link text-white" routerLink="/dashboard">Dashboard</a>
+    </li>
+    <li class="nav-item me-4">
+      <a class="nav-link text-white" routerLink="/analytics">Analytics</a>
+    </li>
+    <li class="nav-item me-4">
+      <a class="nav-link text-white" routerLink="/user-management">User Management</a>
+    </li>
+    <li class="nav-item me-4">
+      <a class="nav-link text-white" routerLink="/reports">Reports</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" routerLink="/settings">Settings</a>
+    </li>
+  </ul>
+
+  <!-- Spacer -->
+  <div class="ms-auto"></div>
+
+  <!-- Profile Menu -->
+  <div class="dropdown">
+    <button
+      class="btn btn-light dropdown-toggle"
+      type="button"
+      id="profileMenu"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <i class="bi bi-person-circle"></i>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileMenu">
+      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><a class="dropdown-item" href="#">Notifications</a></li>
+      <li><hr class="dropdown-divider" /></li>
+      <li><a class="dropdown-item" href="#">Logout</a></li>
+    </ul>
+  </div>
+</nav>

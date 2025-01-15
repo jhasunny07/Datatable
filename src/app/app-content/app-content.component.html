@@ -1,0 +1,175 @@
+<div class="container-fluid">
+  <!-- Key Metrics -->
+
+  <h3>Dashboard</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card key-metric-card">
+        <div class="card-body">
+          <h5 class="card-title">Total Users</h5>
+          <p class="card-text">{{ totalUsers }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card key-metric-card">
+        <div class="card-body">
+          <h5 class="card-title">Active Sessions</h5>
+          <p class="card-text">{{ activeSessions }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card key-metric-card">
+        <div class="card-body">
+          <h5 class="card-title">Bandwidth Utilization</h5>
+          <p class="card-text">{{ bandwidthUtilization }}%</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card key-metric-card">
+        <div class="card-body">
+          <h5 class="card-title">Revenue This Month</h5>
+          <p class="card-text">{{ revenueThisMonth | currency }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Graph Section -->
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Bandwidth Usage Over Time
+          <button class="collapse-btn btn btn-sm btn-primary" (click)="toggleCollapse(0)">
+            {{ collapsedWidgets[0] ? 'Expand' : 'Collapse' }}
+          </button>
+        </div>
+        <div class="card-body" *ngIf="!collapsedWidgets[0]">
+          <apx-chart  
+            [series]="chartBandwidthOptions.series" 
+            [chart]="chartBandwidthOptions.chart"
+            [xaxis]="chartBandwidthOptions.xaxis" 
+            [yaxis]="chartBandwidthOptions.yaxis"
+            [tooltip]="chartBandwidthOptions.tooltip"
+            [colors]="chartBandwidthOptions.colors">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Customer Growth Trends
+          <button class="collapse-btn btn btn-sm btn-primary" (click)="toggleCollapse(1)">
+            {{ collapsedWidgets[1] ? 'Expand' : 'Collapse' }}
+          </button>
+        </div>
+        <div class="card-body" *ngIf="!collapsedWidgets[1]">
+          <apx-chart [series]="chartCustomerGrowthOptions.series" [chart]="chartCustomerGrowthOptions.chart"
+            [xaxis]="chartCustomerGrowthOptions.xaxis" [yaxis]="chartCustomerGrowthOptions.yaxis"
+            [tooltip]="chartCustomerGrowthOptions.tooltip" [colors]="chartCustomerGrowthOptions.colors"></apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alerts Section -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Real-Time Alerts
+        </div>
+        <div class="card-body">
+          <div class="alert alert-warning" *ngFor="let alert of alerts">
+            {{ alert.message }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <button class="btn btn-primary">Add User</button>
+      <button class="btn btn-success">Generate Report</button>
+    </div>
+  </div>
+
+  <!-- Network Status -->
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Live Status Map
+        </div>
+        <div class="card-body">
+          <div class="map-placeholder">[Map Here]</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Active vs Inactive Nodes
+        </div>
+        <div class="card-body">
+          <div class="node-status-placeholder">[Node Status Here]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer Management -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Customer Management
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Status</th>
+                <th>Region</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{ user.name }}</td>
+                <td>{{ user.status }}</td>
+                <td>{{ user.region }}</td>
+                <td>
+                  <button class="btn btn-warning" (click)="suspendUser(user)">Suspend</button>
+                  <button class="btn btn-info" (click)="upgradePlan(user)">Upgrade</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reports Section -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Reports Section
+        </div>
+        <div class="card-body">
+          <button class="btn btn-secondary">Generate Custom Report</button>
+          <button class="btn btn-secondary">Download Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

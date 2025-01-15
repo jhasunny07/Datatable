@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3 class="card-title mb-0">{{ tableTitle }}</h3>
+    <div class="d-flex gap-3">
+      <button class="btn btn-sm btn-group" (click)="exportToCSV()">Export CSV</button>
+      <button class="btn btn-sm btn-group" (click)="exportToExcel()">Export Excel</button>
+      <button class="btn btn-sm btn-group" (click)="exportToPdf()">Export PDF</button>
+
+      <div class="dropdown">
+        <button class="btn btn-sm  btn-group dropdown-toggle" type="button" (click)="toggleDropdown($event)">
+          Toggle Column Visibility
+        </button>
+        <div class="dropdown-menu" [ngClass]="{'show': isDropdownVisible}" (click)="$event.stopPropagation()">
+          <a *ngFor="let column of columns" class="dropdown-item" (click)="toggleColumnVisibility(column)">
+            <span [ngClass]="{'text-muted': !column.visible}">{{ column.name }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="datatable" datatable class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th *ngFor="let column of columns" [ngClass]="{'hidden-column': !column.visible}">{{ column.name }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of data">
+            <td *ngFor="let column of columns" [ngClass]="{'hidden-column': !column.visible}">
+              {{ row[column.key] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- /.card-body -->
+</div>

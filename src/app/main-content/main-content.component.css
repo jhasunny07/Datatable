@@ -1,0 +1,118 @@
+.main-content {
+    padding: 16px;
+    background-color: #f9f9f9;
+    min-height: calc(100vh - 64px); /* Adjust height accounting for the navbar */
+    margin-left: 240px; /* Adjust width accounting for the sidebar */
+    overflow-y: auto;
+  }
+  
+
+  .column-wrapper {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
+  }
+
+
+  .container-left {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .row {
+    --bs-gutter-x: 20px;
+    --bs-gutter-y: 0;
+    display: flex
+;
+    flex-wrap: wrap;
+    margin-top: calc(-1* var(--bs-gutter-y));
+    margin-right: calc(-.5* var(--bs-gutter-x));
+    margin-left: calc(-.5* var(--bs-gutter-x));
+}
+
+
+.apexcharts-legend {
+  display: flex;
+  overflow: auto;
+  padding: 0 10px;
+}
+
+.apexcharts-legend.apx-legend-position-bottom,
+.apexcharts-legend.apx-legend-position-top {
+  flex-wrap: wrap
+}
+
+.apexcharts-legend.apx-legend-position-right,
+.apexcharts-legend.apx-legend-position-left {
+  flex-direction: column;
+  bottom: 0;
+}
+
+.apexcharts-legend.apx-legend-position-bottom.apexcharts-align-left,
+.apexcharts-legend.apx-legend-position-top.apexcharts-align-left,
+.apexcharts-legend.apx-legend-position-right,
+.apexcharts-legend.apx-legend-position-left {
+  justify-content: flex-start;
+}
+
+.apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center,
+.apexcharts-legend.apx-legend-position-top.apexcharts-align-center {
+  justify-content: center;
+}
+
+.apexcharts-legend.apx-legend-position-bottom.apexcharts-align-right,
+.apexcharts-legend.apx-legend-position-top.apexcharts-align-right {
+  justify-content: flex-end;
+}
+
+.apexcharts-legend-series {
+  cursor: pointer;
+  line-height: normal;
+}
+
+.apexcharts-legend.apx-legend-position-bottom .apexcharts-legend-series,
+.apexcharts-legend.apx-legend-position-top .apexcharts-legend-series {
+  display: flex;
+  align-items: center;
+}
+
+.apexcharts-legend-text {
+  position: relative;
+  font-size: 14px;
+}
+
+.apexcharts-legend-text *,
+.apexcharts-legend-marker * {
+  pointer-events: none;
+}
+
+.apexcharts-legend-marker {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 3px;
+  border-style: solid;
+}
+
+.apexcharts-legend.apexcharts-align-right .apexcharts-legend-series,
+.apexcharts-legend.apexcharts-align-left .apexcharts-legend-series {
+  display: inline-block;
+}
+
+.apexcharts-legend-series.apexcharts-no-click {
+  cursor: auto;
+}
+
+.apexcharts-legend .apexcharts-hidden-zero-series,
+.apexcharts-legend .apexcharts-hidden-null-series {
+  display: none !important;
+}
+
+.apexcharts-inactive-legend {
+  opacity: 0.45;
+}

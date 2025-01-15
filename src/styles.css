@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --primary-color: #324c68; /* Blue */
+  --secondary-color: #6c757d; /* Gray */
+  --success-color: #28a745; /* Green */
+  --danger-color: #dc3545; /* Red */
+  --warning-color: #ffc107; /* Yellow */
+  --info-color: #17a2b8; /* Teal */
+  --background-color: #f8f9fa; /* Light background */
+
+  --sidebar-bg-color: #2c3e50; /* Dark background for the sidebar */
+  --text-white-color: #ecf0f1; 
+  --main-content-bg-color: #ecf0f1; /* Background color for the main content area */
+  --text-light-color: #415053;
+}
+
+
+div.dt-container .dt-paging .dt-paging-button {
+  padding: 0 !important; 
+}
+
+
+div.dt-container .dt-paging .dt-paging-button:hover {
+  background: transparent !important; /* Remove hover background */
+  color: inherit !important; /* Remove hover text color */
+  border: 1px solid transparent !important; /* Remove hover border */
+  cursor: pointer !important; /* Keep the cursor pointer effect */
+}
